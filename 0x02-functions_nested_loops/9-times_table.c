@@ -4,33 +4,12 @@
  */
 void times_table(void)
 {
-	int a, b, d;
+	int i;
 
-	for (a = 0; b < 10; a++)
+	printf("9 times table starting from 0:\n");
+	for (i = 0; i <= 10; i++)
 	{
-		for (b = 0; b < 10; b++)
-		{
-			d = a * b;
-			if (b == 0)
-			{
-				_putchar(d + '0');
-			}
-
-			if (d < 10 && b != 0)
-			{
-				_putchar(',');
-				_putchar(' ');
-				_putchar(' ');
-				_putchar(d + '0');
-			}
-			else if (d >= 10)
-			{
-				_putchar(',');
-				_putchar(' ');
-				_putchar((d / 10) + '0');
-				_putchar((d % 10) + '0');
-	}
-			_putchar('\n');
-	}
+		printf("9 x %d = %d\n", i, i * 9);
 	}
 }
+
