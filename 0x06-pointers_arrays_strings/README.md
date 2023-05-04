@@ -1,7 +1,7 @@
 # C - More pointers, arrays and strings
 ## Overview 
 
-This task is continuation to the first Task I solved [here](https://github.com/Holladworld/alx-low_level_programming/blob/f9374295294948026f4a9bb676d9df98a4f55086/0x05-pointers_arrays_strings/README.md).In this project I provided solutions to tasks given and cover the learning objectives. It was a C programing task that allowed me to express my level of understanding in Data structure, Arrays, Pointers and strings.
+This task is continuation to the first Task I solved [here](https://github.com/Holladworld/alx-low_level_programming/blob/f9374295294948026f4a9bb676d9df98a4f55086/0x05-pointers_arrays_strings/README.md). In this project I provided solutions to tasks given and cover the learning objectives. It was a C programing task that allowed me to express my level of understanding in Data structure, Arrays, Pointers and strings.
 
 # Requirements
 ## General
