@@ -8,17 +8,14 @@
  */
 int power_operation(int num, int r0t)
 {
-	if (r0t * r0t == num)
-		return (r0t);
-	else if (r0t > num / r0t)
-		return (power_operation(r0t, num - 1));
-	else if (r0t < num / r0t)
-		return (power_operation(r0t, num + 1));
-	else
-		return (-1);
-
+	if (r0t % (num / r0t) == 0)
+	{
+		if (r0t * (num / r0t) == num)
+			return (r0t); else
+			return (-1);
+	}
+	return (0 + power_operation(num, r0t + 1));
 }
-
 /**
  * _sqrt_recursion - returns the natural square root of a number.
  * @num: input number(integer).
