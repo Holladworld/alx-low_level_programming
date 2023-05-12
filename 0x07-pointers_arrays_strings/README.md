@@ -89,5 +89,5 @@ You may need to install the openssl library to run the crakme2 program: sudo apt
 Edit the source list sudo nano /etc/apt/sources.list to add the following line: deb http://security.ubuntu.com/ubuntu xenial-security main Then sudo apt update and sudo apt install libssl1.0.0
 
 
-## Good Luck!
+## Good Luck!!
 
