@@ -27,14 +27,11 @@ int power_operation(int num, int r0t)
 
 int _sqrt_recursion(int num)
 {
-	int start;
-
-	start = 1;
-
 	if (num < 0)
 		return (-1);
-	else if (num == 1)
+	if (num == 0)
+		return (0);
+	if (num == 1)
 		return (1);
-	else
-		return (power_operation(num, start));
+	return (power_operation(num, 2));
 }
