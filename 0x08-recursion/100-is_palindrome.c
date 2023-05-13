@@ -2,21 +2,21 @@
 
 int check_palindrome(char *s, int len, int a);
 int is_palindrome(char *s);
-_strlen(char *s);
+int is_strlen(char *s);
 
 /**
- * _strlen - Return the length of a string.
+ * is_strlen - Return the length of a string.
  * @s: the string to be measured.
  * Return: string length.
  */
-int _strlen(char *s)
+int is_strlen(char *s)
 {
 	int len = 0;
 
 	if (*(s + len))
 	{
 		len++;
-		len += _strlen(s + len);
+		len += is_strlen(s + len);
 	}
 	return (len);
 }
@@ -32,6 +32,7 @@ int check_palindrome(char *s, int len, int a)
 {
 	if (s[a] == s[len / 2])
 	return (1);
+
 	if (s[a] == s[len - a - 1])
 	return (check_palindrome(s, len, a + 1));
 	return (0);
@@ -46,9 +47,9 @@ int check_palindrome(char *s, int len, int a)
 int is_palindrome(char *s)
 {
 	int a = 0;
-	int len = _strlen(s);
+	int len = is_strlen(s);
 
 	if (!(*s))
 		return (1);
-	return (check_palindrome(s, len a));
+	return (check_palindrome(s, len, a));
 }
