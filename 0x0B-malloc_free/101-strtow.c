@@ -85,7 +85,11 @@ char **strtow(char *str)
 
 		for (b = 0; b < letters; b++)
 			strings[a][b] = str[initial++];
-	}
+
 	strings[a][b] = '\0';
+
+	}
+	strings[a] = NULL;
+
 	return (strings);
 }
