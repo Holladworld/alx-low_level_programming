@@ -12,7 +12,7 @@
  * @age: age of the dog
  * @name: name of the dog.
  *
- * desc: struct called "dog" that stores its name, its age 
+ * desc: struct called "dog" that stores its name, its age
  * and name of the owner.
  */
 struct dog
@@ -22,7 +22,8 @@ struct dog
 	char *owner;
 };
 
-/* dog_t - typedef for struct dog
+/**
+ * dog_t - typedef for struct dog
  */
 typedef struct dog dog_t;
 
