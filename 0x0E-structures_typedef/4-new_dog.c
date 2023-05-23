@@ -1,5 +1,42 @@
 #include "dog.h"
 #include <stdlib.h>
+int _strlen(char *str);
+char *_strcopy(char *dest, char *src);
+
+/**
+ * _strlen - find the length of a string
+ * @str: string to be measured
+ * Return: length of string
+ */
+
+int _strlen(char *str)
+{
+	int len = 0;
+
+	while (*str++)
+		len++;
+	return (len);
+}
+
+/**
+ * _strcopy - copy a string pointed to src, include
+ * the terminating null byte to buffer pointed to dest.
+ * @dest: buffer storing string copy
+ * @src: source string
+ *
+ * Return: The pointer to dest
+ */
+char *_strcopy(char *dest, char *src)
+{
+	int index = 0;
+
+	for (index = 0; src[index]; index++)
+		dest[index] = src[index];
+
+	dest[index] = '\0';
+
+	return (dest);
+}
 
 /**
  * new_dog - creates a new dog
@@ -13,43 +50,30 @@
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *doggy;
-	int d, dname, downer;
 
-	doggy = malloc(sizeof(doggy));
+	if (name == NULL || age < 0 || owner == NULL)
+		return (NULL);
 
-	if (doggy == NULL || !(name) || !(owner))
+	doggy = malloc(sizeof(dog_t));
+	if (doggy == NULL)
+		return (NULL);
+
+	doggy->name = malloc(sizeof(char) * (_strlen(name) + 1));
+	if (doggy->name == NULL)
 	{
 		free(doggy);
 		return (NULL);
 	}
-
-	for (dname = 0; name[dname]; dname++)
-		;
-	for (downer = 0; owner[downer]; downer++)
-		;
-	doggy->name = malloc(dname + 1);
-	doggy->owner = malloc(downer + 1);
-
-	if (!(doggy->name) || !(doggy->owner))
+	doggy->owner = malloc(sizeof(char) * (_strlen(owner) + 1));
+	if (doggy->owner == NULL)
 	{
-		free(doggy->owner);
 		free(doggy->name);
 		free(doggy);
 		return (NULL);
 	}
-
-	for (d = 0; d < dname; d++)
-		doggy->name[d] = name[d];
-	doggy->name[d] = '\0';
-
+	doggy->name = _strcopy(doggy->name, name);
 	doggy->age = age;
-
-	for (d = 0; d < downer; d++)
-		doggy->owner[d] = owner[d];
-	doggy->owner[d] = '\0';
+	doggy->owner = _strcopy(doggy->owner, owner);
 
 	return (doggy);
 }
-
-
-
