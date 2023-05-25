@@ -7,10 +7,10 @@
  * @argv: array of arguments inputted
  * Return: 0
  */
-int main(int argc, char *argv[])
+int main(int  __attribute__((__unused__)) argc, char *argv[])
 {
 	int a, b, result;
-	int (*op)(int, int);
+	char *op;
 
 	if (argc != 4)
 	{
@@ -18,17 +18,22 @@ int main(int argc, char *argv[])
 
 	exit(98);
 	}
-	op = get_op_func(argv[2]);
-	if (op == NULL)
+	a = atoi(argv[1]);
+	op = argv[2];
+	b = atoi(argv[3]);
+
+	if (get_op_func(op) == NULL || op[1] != '\0')
 	{
 		printf("Error\n");
 		exit(99);
 	}
-	a = atoi(argv[1]);
-	b = atoi(argv[3]);
-	result = op(a, b);
+	if ((*op == '/' && b == 0) ||
+			(*op == '%' b == 0))
+	{
+		printf("Error\n");
+		exit(100);
+	}
+	printf("%d\n", get_op_func(op)(a, b));
 
-	printf("%d/n", result);
 	return (0);
 }
-
