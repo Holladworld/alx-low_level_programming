@@ -1,10 +1,6 @@
 #ifndef FUNCTION_POINTERS_H
 #define FUNCTION_POINTERS_H
 
-/**
- * Desc: Heade file containing prototypes of all functions for the task 0x0F- function_pointers directory
- */
-
 #include <stdlib.h>
 #include <stdio.h>
 void print_name(char *name, void (*f)(char *));
