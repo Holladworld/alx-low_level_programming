@@ -9,7 +9,7 @@
  */
 int main(int  __attribute__((__unused__)) argc, char *argv[])
 {
-	int a, b, result;
+	int a, b;
 	char *op;
 
 	if (argc != 4)
@@ -28,7 +28,7 @@ int main(int  __attribute__((__unused__)) argc, char *argv[])
 		exit(99);
 	}
 	if ((*op == '/' && b == 0) ||
-			(*op == '%' b == 0))
+			(*op == '%' && b == 0))
 	{
 		printf("Error\n");
 		exit(100);
