@@ -16,5 +16,4 @@ int _strlen(char *s);
 int is_digit(char *s);
 void _puts(char *str);
 int _atoi(const char *s);
-int main(int argc, char *argv[])
 #endif
