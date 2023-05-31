@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 			}
 		}
 	}
-	mult = atol(argv[1]) * atol(argv[2]);
+	mult = atoi(argv[1]) * atoi(argv[2]);
 	printf("%lu\n", mult);
 	return (0);
 }
