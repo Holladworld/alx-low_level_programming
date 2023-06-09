@@ -17,7 +17,7 @@ int prime_number(int divider, int num)
 		{
 		return (1);
 		}
-		else 
+		else
 		{
 			++divider;
 			return (prime_number(divider, num));
@@ -33,7 +33,6 @@ int prime_number(int divider, int num)
 /**
  * is_prime_number - function that return 1 if input is prime number
  * @n: integer numbe
- * @divider: divisor
  * Return: if input is prime return 1 otherwise return 0
  */
 int is_prime_number(int n)
