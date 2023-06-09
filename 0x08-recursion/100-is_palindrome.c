@@ -25,13 +25,13 @@ int string_length(char *s)
 int recursive(char *s, int len)
 {
 	if (len <= 0)
-		{
-			return (1);
-		}
-		else if (*s == *(s + len))
-		{
-			return (recursive(++s, len - 2));
-		}
+	{
+		return (1);
+	}
+	else if (*s == *(s + len))
+	{
+		return (recursive(++s, len - 2));
+	}
 	else
 	{
 		return (0);
