@@ -2,7 +2,7 @@
 
 /**
  * _calloc - function that allocate memeory to an array
- * @nmemb: number of element in the array 
+ * @nmemb: number of element in the array
  * @size: size of element of array
  * Return: NULL if size is zero and if malloc fails
  */
@@ -26,7 +26,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 
 	arry = mem;
 
-	for (a = 0; a < nmemb *size; a++)
+	for (a = 0; a < nmemb * size; a++)
 	{
 		arry[a] = 0;
 	}
