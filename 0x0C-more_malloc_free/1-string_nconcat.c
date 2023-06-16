@@ -45,7 +45,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		num1 = _strlen(s2);
 	}
-	
+
 
 	num2 = _strlen(s1) + num1 + 1;
 	pointer = malloc(sizeof(*pointer) * num2);
