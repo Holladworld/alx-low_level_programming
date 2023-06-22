@@ -2,8 +2,9 @@
 
 /**
  * int_index - function that search for integers in arrays of integers
- * @array: size of an array
+ * @array: array to search
  * @cmp: pointer to the function to be used to compare values
+ * @size: size of aray
  * Return: int_index if the first element of cmp does not
  * return 0
  */
