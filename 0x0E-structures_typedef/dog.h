@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
 /**
  * struct dog - struct for dog
  * @name: name
@@ -16,9 +17,10 @@ struct dog
 	float age;
 	char *owner;
 };
+
 /**
  * dog_t - typedef for struct dog
- * */
+ */
 typedef struct dog dog_t;
 
 void print_dog(struct dog *d);
