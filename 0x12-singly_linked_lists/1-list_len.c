@@ -1,8 +1,8 @@
 #include "lists.h"
 /**
  * list_len - print sring and length
- * @h pointer to first element in strin
- * Return - length of list
+ * @h pointer: to first element in strin
+ * Return: length of list
  */
 size_t list_len(const list_t *h)
 {
