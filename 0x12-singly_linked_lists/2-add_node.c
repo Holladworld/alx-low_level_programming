@@ -1,13 +1,13 @@
-#include "list.c"
+#include "lists.h"
 /**
  * add_node - adds a new node to the begining of list
  * @head: head of linked list
  * @str: string to store in the list
  * REturn: address of head
  */
-list *add_node(list_t **head, const char *str)
+list_t *add_node(list_t **head, const char *str)
 {
-	list_t *new node;
+	list_t *new_node;
 	size_t list;
 
 	new_node = malloc(sizeof(list_t));
