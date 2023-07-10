@@ -10,13 +10,16 @@
 void error_checker(int file_frm, int file_to, char *argv[])
 {
 	if (file_frm == -1)
+	{
 		dprintf(STDERR_FILENO, "Error: can't read from file %s\n", argv[1]);
-	exit(98);
+		exit(98);
+	}
 
 	if (file_to == -1)
-
+	{
 		dprintf(STDERR_FILENO, "Error: can't write to %s\n", argv[2]);
-	exit(99);
+		exit(99);
+	}
 }
 /**
  * main - check the code and content into another file
@@ -32,11 +35,14 @@ int main(int argc, char *argv[])
 	ssize_t fdw = NBYTES, fdr;
 
 	if (argc != 3)
+	{
 		dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_frm file_to");
-			exit(97);
+		exit(97);
+	}
 
-	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
 	file_frm = open(argv[1], O_RDONLY);
+	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
+
 
 	error_checker(file_frm, file_to, argv);
 
