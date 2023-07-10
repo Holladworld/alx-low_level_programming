@@ -1,8 +1,9 @@
 #include "main.h"
+
 /**
  * read_textfile - functon to read file and print it to stdout
- * @filename: where filename is.
- * @letter: numbers and letter to read and write
+ * @filename: where filename is
+ * @letters: numbers and letter to read and write
  * Return: 0 if filename is NULL
  */
 ssize_t read_textfile(const char *filename, size_t letters)
