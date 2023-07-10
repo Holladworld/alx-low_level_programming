@@ -1,6 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
-#define NBYTES 1024
+#define BYTES 1024
 
 #include <stdio.h>
 #include <unistd.h>
