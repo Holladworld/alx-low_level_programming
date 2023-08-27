@@ -19,7 +19,7 @@ dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 
 	while (num_node && h != index)
 	{
-	
+
 		num_node = num_node->next;
 		h++;
 	}
