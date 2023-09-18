@@ -3,12 +3,13 @@
 /**
  * hash_table_delete - free hash table and all nodes
  * @ht: pointer to hash table
- *
+ * Return: void
  */
 
 void hash_table_delete(hash_table_t *ht)
 {
-	hash_node_t *bucket, *aux_free;
+	hash_node_t *node;
+       	hash_node_t *current;
 	unsigned long int i = 0;
 
 	if (!ht)
@@ -16,16 +17,16 @@ void hash_table_delete(hash_table_t *ht)
 
 	for (i = 0; i < ht->size; i++)
 	{
-		bucket = ht->array[i];
-		while (bucket)
+		node = ht->array[i];
+		while (node)
 		{
-			aux_free = bucket;
-			bucket = bucket->next;
-			if (aux_free->key)
-				free(aux_free->key);
-			if (aux_free->value)
-				free(aux_free->value);
-			free(aux_free);
+			current = node;
+			node = node->next;
+			if (current->key)
+				free(current->key);
+			if (current->value)
+				free(current->value);
+			free(current);
 		}
 	}
 	free(ht->array);
