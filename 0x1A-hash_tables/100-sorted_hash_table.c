@@ -1,43 +1,6 @@
 #include "hash_tables.h"
 
 /**
- * sorted_list - function for insert new node in sorted
- * @ht: pointer to sorted hash table
- * @new_node: pew node to insert
- *
- */
-void sorted_list(shash_table_t *ht, shash_node_t *new_node)
-{
-	shash_node_t *sbucket = ht->shead;
-
-	if (sbucket == NULL)
-	{
-		ht->shead = ht->stail = new_node;
-		new_node->snext = new_node->sprev = NULL;
-		return;
-	}
-	do {
-		if (strcmp(new_node->key, sbucket->key) < 0)
-		{
-			new_node->snext = sbucket;
-			new_node->sprev = sbucket->sprev;
-
-			if (!sbucket->sprev)
-				ht->shead = new_node;
-			else
-				sbucket->sprev->snext = new_node;
-			sbucket->sprev = new_node;
-			return;
-		}
-		sbucket = sbucket->snext;
-	} while (sbucket);
-	new_node->sprev = ht->stail;
-	new_node->snext = ht->stail->snext;
-	ht->stail->snext = new_node;
-	ht->stail = new_node;
-}
-
-/**
  * shash_table_create - creates a sorted hash tables
  * @size: size of the hash table
  *
@@ -45,71 +8,76 @@ void sorted_list(shash_table_t *ht, shash_node_t *new_node)
  */
 shash_table_t *shash_table_create(unsigned long int size)
 {
-	shash_table_t *table;
+	shash_table_t *_hash_table;
 
 	if (size == 0)
 		return (NULL);
 
-	table = calloc(1, sizeof(shash_table_t));
-	if (table == NULL)
+	hash_table = calloc(1, sizeof(shash_table_t));
+	if (hash_table == NULL)
 		return (NULL);
 
-	table->size = size;
-	table->array = calloc(size, sizeof(shash_node_t *));
-	if (table->array == NULL)
+	hash_table->size = size;
+	hash-table->array = calloc(size, sizeof(shash_node_t *));
+	if (hash_table->array == NULL)
 	{
-		free(table);
+		free(hash_table);
 		return (NULL);
 	}
-	return (table);
+
+	return (hash_table);
 }
 
 /**
  * shash_table_set - function that adds an element to the sorted hash table
  * @ht: pointer to sorted hash table
- * @key: key to add the element
+ * @key: key to add the element cant be empty string
+ *
  * @value: value to add the element
  *
- * Return: 1 if it succeeded, 0 otherwise
+ * Return: 1 if success, 0 if failed
  */
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index = 0;
-	char *valuecopy, *keycopy;
-	shash_node_t  *bucket, *new_node;
+	char *hash_value, *hash_key;
+	shash_node_t  *node, *new_node;
 
 	if (!ht || !key || !*key || !value)
 		return (0);
-	valuecopy = strdup(value);
-	if (!valuecopy)
+	hash_value = strdup(value);
+	if (!hash_value)
 		return (0);
 	index = key_index((const unsigned char *)key, ht->size);
-	bucket = ht->array[index];
+	node = ht->array[index];
 
-	while (bucket)
+	while (node)
 	{
-		if (!strcmp(key, bucket->key))
+		if (!strcmp(key, node->key))
 		{
-			free(bucket->value);
-			bucket->value = valuecopy;
+			free(node->value);
+			node->value = hash_value;
 			return (1);
 		}
-		bucket = bucket->next;
+		node = node->next;
 	}
 	new_node = calloc(1, sizeof(shash_node_t));
 	if (new_node == NULL)
 	{
-		free(valuecopy);
+		free(hash_value);
 		return (0);
 	}
-	keycopy = strdup(key);
-	if (!keycopy)
+
+	hash_key = strdup(key);
+	if (!hash_key)
 		return (0);
-	new_node->key = keycopy;
-	new_node->value = valuecopy;
+
+	new_node->key = hash_key;
+	new_node->value = hash_value;
 	new_node->next = ht->array[index];
 	ht->array[index] = new_node;
 	sorted_list(ht, new_node);
+
 	return (1);
 }
 /**
@@ -122,17 +90,18 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
 	unsigned long int index = 0;
-	shash_node_t  *bucket;
+	shash_node_t  *node;
 
 	if (!ht || !key || !*key)
+
 		return (NULL);
 	index = key_index((const unsigned char *)key, ht->size);
-	bucket = ht->array[index];
-	while (bucket)
+	node = ht->array[index];
+	while (node)
 	{
-		if (!strcmp(key, bucket->key))
-			return (bucket->value);
-		bucket = bucket->next;
+		if (!strcmp(key, node->key))
+			return (node->value);
+		node = node->next;
 	}
 	return (NULL);
 }
@@ -144,20 +113,20 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
  */
 void shash_table_print(const shash_table_t *ht)
 {
-	shash_node_t *bucket;
-	int not_fin = 0;
+	shash_node_t *node;
+	int index = 0;
 
 	if (!ht)
 		return;
-	bucket = ht->shead;
+	node = ht->shead;
 	printf("{");
-	while (bucket)
+	while (node)
 	{
-		if (not_fin)
+		if (index)
 			printf(", ");
-		printf("'%s': '%s'", bucket->key, bucket->value);
-		not_fin = 1;
-		bucket = bucket->snext;
+		printf("'%s': '%s'", node->key, node->value);
+		index = 1;
+		node = node->snext;
 	}
 	printf("}\n");
 }
@@ -168,20 +137,20 @@ void shash_table_print(const shash_table_t *ht)
  */
 void shash_table_print_rev(const shash_table_t *ht)
 {
-	shash_node_t *bucket;
-	int not_fin = 0;
+	shash_node_t *node;
+	int index = 0;
 
 	if (!ht)
 		return;
-	bucket = ht->stail;
+	node = ht->stail;
 	printf("{");
-	while (bucket)
+	while (node)
 	{
-		if (not_fin)
+		if (index)
 			printf(", ");
-		printf("'%s': '%s'", bucket->key, bucket->value);
-		not_fin = 1;
-		bucket = bucket->sprev;
+		printf("'%s': '%s'", node->key, node->value);
+		index = 1;
+		node = node->sprev;
 	}
 	printf("}\n");
 }
@@ -192,26 +161,64 @@ void shash_table_print_rev(const shash_table_t *ht)
  */
 void shash_table_delete(shash_table_t *ht)
 {
-	shash_node_t *bucket, *aux_free;
-	unsigned long int i = 0;
+	shash_node_t *node, *hash_free;
+	unsigned long int index = 0;
 
 	if (!ht)
 		return;
 
-	for (i = 0; i < ht->size; i++)
+	for (index = 0; index < ht->size; index++)
 	{
-		bucket = ht->array[i];
-		while (bucket)
+		node = ht->array[index];
+		while (node)
 		{
-			aux_free = bucket;
-			bucket = bucket->next;
-			if (aux_free->key)
-				free(aux_free->key);
-			if (aux_free->value)
-				free(aux_free->value);
-			free(aux_free);
+			hash_free = node;
+			node = node->next;
+			if (hash_free->key)
+				free(hash_free->key);
+			if (hash_free->value)
+				free(hash_free->value);
+			free(hash_free);
 		}
 	}
 	free(ht->array);
 	free(ht);
+}
+
+/**
+ * sorted_list - function for insert new node in sorted
+ * @ht: pointer to sorted hash table
+ * 
+ * @new_node: pew node to insert
+ *
+ */
+void sorted_list(shash_table_t *ht, shash_node_t *new_node)
+{
+        shash_node_t *sbucket = ht->shead;
+
+        if (sbucket == NULL)
+        {
+                ht->shead = ht->stail = new_node;
+                new_node->snext = new_node->sprev = NULL;
+                return;
+        }
+        do {
+                if (strcmp(new_node->key, sbucket->key) < 0)
+                {
+                        new_node->snext = sbucket;
+                        new_node->sprev = sbucket->sprev;
+
+                        if (!sbucket->sprev)
+                                ht->shead = new_node;
+                        else
+                                sbucket->sprev->snext = new_node;
+                        sbucket->sprev = new_node;
+                        return;
+                }
+                sbucket = sbucket->snext;
+        } while (sbucket);
+        new_node->sprev = ht->stail;
+        new_node->snext = ht->stail->snext;
+        ht->stail->snext = new_node;
+        ht->stail = new_node;
 }
