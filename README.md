@@ -1,7 +1,7 @@
 # Software Engineering Trainnig
 ## C programing Language Traing <img align='right' src="https://cka.collectiva.in/Content/images/CourseImages/9.png">
 </br>
-# ALX (Holberton School) Software Engineering  <img align='right' src="https://pbs.twimg.com/profile_images/1598046444467982352/zgotfroP_400x400.jpg">
+# ALX (Holberton School) Software Engineering  <img align='right' rc="https://pbs.twimg.com/profile_images/1598046444467982352/zgotfroP_400x400.jpg" width="100" height="100">
 </br>
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
