@@ -1,5 +1,5 @@
-# Software Engineering Trainnig
-## C programing Language Traing <img align='right' src="https://cka.collectiva.in/Content/images/CourseImages/9.png">
+# Software Engineering Training
+## C programing Language Training <img align='right' src="https://cka.collectiva.in/Content/images/CourseImages/9.png">
 </br>
 ALX (Holberton School) Software Engineering <img align='right' rc="https://pbs.twimg.com/profile_images/1598046444467982352/zgotfroP_400x400.jpg">
 </br>
