@@ -1,5 +1,5 @@
 # Software Engineering Trainnig
-## C programing Language Traing
+## C programing Language Traing <img align='right' src="https://cka.collectiva.in/Content/images/CourseImages/9.png">
 
 # ALX (Holberton School) Software Engineering  <img align='right' src="https://oppourtunities.com/wp-content/uploads/2023/06/OIP-2.jpeg">
 </br>
@@ -10,4 +10,5 @@
 [![badgen](https://badgen.net/badge/icon/terminal?icon=terminal&label)](https://badgen.net)
 
 </br>
+
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c.svg)](https://forthebadge.com)                                                                                     
