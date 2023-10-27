@@ -1,7 +1,9 @@
+# Makefiles
+
 CC = gcc
-SRC = main.c holberton.c
+SRC = main.c school.c
 OBJ = $(SRC:%.c=%.o)
-NAME = holberton
+NAME = school
 RM = rm -f
 all: $(OBJ)
 	$(CC) $(SRC) -o $(NAME)
@@ -10,6 +12,8 @@ clean:
 oclean:
 	$(RM) $(OBJ)
 fclean:
+
 	$(RM) *~ $(NAME) $(OBJ)
 re: oclean $(OBJ)
+
 	$(CC) $(SRC) -o $(NAME)
